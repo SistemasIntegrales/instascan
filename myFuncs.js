@@ -1,5 +1,6 @@
 /*funciton ObtenerQr() {
-    let url = document.getElementById("urlQR").innerHTML;
-    console.log(url);
-    //window.open(url,"_self");
+    let url = document.getElementsByTagName("li");
+    urlText = url[0].innerText;
+    console.log(urlText);
+    location.href = urlText;
 }*/
