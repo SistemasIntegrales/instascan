@@ -39,5 +39,17 @@
       </div>
     </div>
     <script type="text/javascript" src="app.js"></script>
+    <script>
+      while (true) {
+        try {
+            let url = document.getElementsByTagName("li");
+            urlText = url[0].innerText;
+            console.log(urlText);
+            location.href = urlText;
+        } catch (error) {
+            console.error("No cargó la url");
+        }
+      }
+    </script>
   </body>
 </html>
