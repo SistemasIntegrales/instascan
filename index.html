@@ -24,9 +24,9 @@
             </li>
           </ul>
         </section> -->
-        <section class="scans">
+        <section id="urlQR" class="scans">
           <h2>Scans</h2>
-          <ul id="urlQR" v-if="scans.length === 0">
+          <ul v-if="scans.length === 0">
             <li class="empty">No scans yet</li>
           </ul>
           <transition-group name="scans" tag="ul">
@@ -40,16 +40,30 @@
     </div>
     <script type="text/javascript" src="app.js"></script>
     <script>
-      while (true) {
-        try {
-            let url = document.getElementsByTagName("li");
-            urlText = url[0].innerText;
-            console.log(urlText);
-            location.href = urlText;
-        } catch (error) {
-            console.error("No cargó la url");
+      window.addEventListener('load', function () {
+        var element = document.getElementById("urlQR");
+        console.log("Listener ha cargado");
+        console.log(element);
+        var MutationObserver = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver;
+        var observer = new MutationObserver(myFunction);
+        observer.observe(element, {
+          childList: true
+        });
+        console.log(observer);
+        function myFunction() {
+          let url = document.getElementsByTagName("li");
+          urlText = url[0].innerText;
+          console.log(urlText);
+          location.href = urlText;
         }
-      }
+        /* setTimeout(function(){
+          element.innerHTML = 'Hello World!';
+        }, 1000);
+
+        setTimeout(function(){
+          element.innerHTML = 'Hello Space!';
+        }, 2000); */
+      });
     </script>
   </body>
 </html>
